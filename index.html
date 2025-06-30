@@ -418,6 +418,84 @@
             line-height: 1.7;
         }
 
+        /* Compact Slideshow Section */
+        .slideshow-section {
+            padding: 40px 0;
+            background-color: var(--card-bg);
+        }
+
+        .slideshow-container {
+            max-width: 800px;
+            position: relative;
+            margin: auto;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .slide {
+            display: none;
+            position: relative;
+        }
+
+        .slide.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0.4; }
+            to { opacity: 1; }
+        }
+
+        .slide img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .slide-content h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--secondary-color);
+        }
+
+        .slide-content p {
+            font-size: 14px;
+            color: var(--light-color);
+        }
+
+        .slide-nav {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 12px;
+            width: 12px;
+            margin: 0 4px;
+            background-color: var(--border-color);
+            border-radius: 50%;
+            display: inline-block;
+            transition: var(--transition);
+        }
+
+        .dot.active, .dot:hover {
+            background-color: var(--primary-color);
+        }
+
         /* Projects Section */
         .projects-grid {
             display: grid;
@@ -643,9 +721,9 @@
         .login-form {
             background-color: var(--card-bg);
             border-radius: var(--radius-lg);
-            padding: 40px;
-            width: 100%;
-            max-width: 500px;
+            padding: 30px;
+            width: 90%;
+            max-width: 400px;
             box-shadow: var(--shadow-lg);
             position: relative;
             transform: translateY(20px);
@@ -658,8 +736,8 @@
 
         .close-modal {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 15px;
+            right: 15px;
             background: none;
             border: none;
             color: var(--text-light);
@@ -674,17 +752,19 @@
 
         .login-form h2 {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             color: var(--text-color);
-            font-size: 28px;
+            font-size: 24px;
         }
 
         .login-form .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .login-form .btn {
             width: 100%;
+            padding: 10px 15px;
+            font-size: 16px;
         }
 
         /* Admin Dashboard */
@@ -892,6 +972,18 @@
             .dashboard-title h1 {
                 font-size: 28px;
             }
+
+            .slide img {
+                height: 250px;
+            }
+            
+            .slide-content h3 {
+                font-size: 16px;
+            }
+            
+            .slide-content p {
+                font-size: 12px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -922,7 +1014,7 @@
             }
 
             .login-form, .project-form {
-                padding: 30px 20px;
+                padding: 25px 15px;
             }
 
             .section-header {
@@ -939,6 +1031,28 @@
 
             .project-list-item-actions {
                 align-self: flex-end;
+            }
+
+            .slide img {
+                height: 200px;
+            }
+            
+            .slideshow-container {
+                border-radius: var(--radius-sm);
+            }
+
+            .login-form h2 {
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+
+            .login-form .form-group {
+                margin-bottom: 15px;
+            }
+
+            .login-form input {
+                padding: 10px 12px;
+                font-size: 15px;
             }
         }
     </style>
@@ -1108,6 +1222,80 @@
                         <h3>VoIP Solutions</h3>
                         <p>Implementation of voice-over-IP systems with quality of service (QoS) guarantees for crystal-clear communication.</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Compact Slideshow Section with 8 Pictures -->
+        <section class="slideshow-section">
+            <div class="container">
+                <div class="slideshow-container">
+                    <div class="slide active">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Network Design">
+                        <div class="slide-content">
+                            <h3>Network Design in Packet Tracer</h3>
+                            <p>Enterprise network with VLANs, routing, and security</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1581092921461-39b2f2c8f3b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="GPS Tracking">
+                        <div class="slide-content">
+                            <h3>GPS Tracking System</h3>
+                            <p>Real-time fleet monitoring solution</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="VoIP System">
+                        <div class="slide-content">
+                            <h3>VoIP Implementation</h3>
+                            <p>QoS configured for optimal voice quality</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="School Network">
+                        <div class="slide-content">
+                            <h3>School Network</h3>
+                            <p>Scalable design with content filtering</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1597852074816-d933c7d2b988?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Data Center">
+                        <div class="slide-content">
+                            <h3>Data Center Network</h3>
+                            <p>High-performance infrastructure with redundancy</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Network Cabling">
+                        <div class="slide-content">
+                            <h3>Structured Cabling</h3>
+                            <p>Professional cable management and installation</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Network Security">
+                        <div class="slide-content">
+                            <h3>Security Operations Center</h3>
+                            <p>24/7 network monitoring and threat detection</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1597852074816-d933c7d2b988?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Cloud Network">
+                        <div class="slide-content">
+                            <h3>Cloud Network Architecture</h3>
+                            <p>Multi-cloud connectivity with SD-WAN</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-nav">
+                    <span class="dot active" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
+                    <span class="dot" onclick="currentSlide(6)"></span>
+                    <span class="dot" onclick="currentSlide(7)"></span>
+                    <span class="dot" onclick="currentSlide(8)"></span>
                 </div>
             </div>
         </section>
@@ -1388,6 +1576,38 @@
         const closeMobileMenu = () => {
             mobileMenu.classList.remove('active');
         };
+
+        // Compact Slideshow functionality
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            const slides = document.getElementsByClassName("slide");
+            const dots = document.getElementsByClassName("dot");
+            
+            // Hide all slides
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+                dots[i].classList.remove("active");
+            }
+            
+            // Move to next slide
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            
+            // Show current slide
+            slides[slideIndex-1].classList.add("active");
+            dots[slideIndex-1].classList.add("active");
+            
+            // Change slide every 3 seconds
+            setTimeout(showSlides, 3000);
+        }
+
+        // Manual slide control
+        function currentSlide(n) {
+            slideIndex = n - 1;
+            showSlides();
+        }
 
         // Load projects from Firebase
         const loadProjects = () => {
