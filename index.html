@@ -289,6 +289,25 @@
             height: 100%;
             object-fit: cover;
             z-index: -1;
+            /* Fallback for mobile */
+            display: none;
+        }
+
+        /* Show video when it's playing */
+        .hero-video.playing {
+            display: block;
+        }
+
+        /* Fallback image for mobile */
+        .hero-fallback {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            display: block;
         }
 
         .hero-overlay {
@@ -1197,7 +1216,7 @@
             <div class="container header-container">
                 <a href="#home" class="logo">
                     <i class="fas fa-network-wired"></i>
-                    <span>ConfigWizard</span>
+                    <span>Networking</span>
                 </a>
                 <nav>
                     <ul id="navMenu">
@@ -1238,10 +1257,15 @@
 
         <!-- Hero Section with Video Background -->
         <section class="hero" id="home">
-            <video class="hero-video" autoplay muted loop>
+            <!-- Fallback image for mobile -->
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Network Background" class="hero-fallback">
+            
+            <!-- Video background -->
+            <video class="hero-video" autoplay muted loop playsinline>
                 <source src="https://videos.pexels.com/video-files/1085656/1085656-uhd_2560_1440_25fps.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
+            
             <div class="hero-overlay"></div>
             <div class="container">
                 <img src="images/profile.jpg" alt="Ganizani B Njobvu" class="profile-pic">
@@ -1559,7 +1583,7 @@
                 <div class="footer-content">
                     <div class="logo">
                         <i class="fas fa-network-wired"></i>
-                        <span>ConfigWizard</span>
+                        <span>Networking</span>
                     </div>
                     <p>Professional network engineering solutions for modern businesses</p>
                     <div class="footer-links">
@@ -1696,6 +1720,8 @@
         const mobileMenuClose = document.getElementById('mobileMenuClose');
         const mobileMenu = document.getElementById('mobileMenu');
         const contactForm = document.getElementById('contactForm');
+        const heroVideo = document.querySelector('.hero-video');
+        const heroFallback = document.querySelector('.hero-fallback');
 
         // Admin credentials
         const adminEmail = "ganizaninjobvu@gmail.com"; // Your admin email
@@ -1720,6 +1746,33 @@
         // Close mobile menu when clicking a link
         const closeMobileMenu = () => {
             mobileMenu.classList.remove('active');
+        };
+
+        // Handle video background for mobile
+        const handleVideoBackground = () => {
+            // Check if video can play
+            const canAutoplay = 'autoplay' in document.createElement('video');
+            
+            if (canAutoplay) {
+                // Try to play the video
+                const promise = heroVideo.play();
+                
+                if (promise !== undefined) {
+                    promise.then(() => {
+                        // Video is playing, hide fallback
+                        heroVideo.classList.add('playing');
+                        heroFallback.style.display = 'none';
+                    }).catch(error => {
+                        // Video failed to play, show fallback
+                        heroVideo.classList.remove('playing');
+                        heroFallback.style.display = 'block';
+                    });
+                }
+            } else {
+                // Autoplay not supported, show fallback
+                heroVideo.classList.remove('playing');
+                heroFallback.style.display = 'block';
+            }
         };
 
         // Compact Slideshow functionality
@@ -2062,6 +2115,10 @@
 
         // Load data from Firebase
         loadProjects();
+
+        // Handle video background
+        document.addEventListener('DOMContentLoaded', handleVideoBackground);
+        window.addEventListener('load', handleVideoBackground);
 
         // Create admin user (run this once, then comment out)
         // createAdminUser();
