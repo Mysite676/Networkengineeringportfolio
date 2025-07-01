@@ -56,16 +56,19 @@
             padding: 0 20px;
         }
 
-        /* Header */
+        /* Header - Professional Menu */
         header {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
             color: white;
-            padding: 20px 0;
-            box-shadow: var(--shadow);
+            padding: 15px 0;
+            box-shadow: var(--shadow-md);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .header-container {
@@ -80,16 +83,25 @@
             gap: 10px;
             font-size: 24px;
             font-weight: 600;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
         }
 
         .logo i {
             color: var(--secondary-color);
+            font-size: 28px;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 25px;
+            align-items: center;
         }
 
         nav a {
@@ -98,6 +110,9 @@
             font-weight: 500;
             transition: var(--transition);
             position: relative;
+            padding: 8px 0;
+            font-size: 16px;
+            display: inline-block;
         }
 
         nav a:hover {
@@ -107,7 +122,7 @@
         nav a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
@@ -119,45 +134,92 @@
             width: 100%;
         }
 
+        .admin-btn {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 8px 20px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .admin-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .admin-btn i {
+            font-size: 14px;
+        }
+
         .mobile-menu-btn {
             display: none;
             background: none;
             border: none;
             color: white;
-            font-size: 24px;
+            font-size: 28px;
             cursor: pointer;
             z-index: 1100;
+            transition: var(--transition);
+            padding: 5px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
         .mobile-menu-close {
             display: none;
             position: fixed;
-            top: 25px;
-            right: 25px;
-            background: none;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.5);
             border: none;
-            color: var(--accent-color);
+            color: white;
             font-size: 28px;
             cursor: pointer;
             z-index: 1100;
+            transition: var(--transition);
+            padding: 5px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
         }
 
-        /* Mobile Menu */
+        .mobile-menu-close:hover {
+            color: var(--accent-color);
+            transform: rotate(90deg);
+        }
+
+        /* Mobile Menu - Professional Design */
         .mobile-menu {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100vh;
-            background-color: var(--card-bg);
+            background-color: rgba(30, 33, 48, 0.98);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 30px;
+            gap: 25px;
             z-index: 1050;
             transform: translateX(-100%);
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.4s ease-in-out;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .mobile-menu.active {
@@ -167,11 +229,27 @@
         .mobile-menu a {
             color: var(--text-color);
             text-decoration: none;
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 500;
             transition: var(--transition);
-            padding: 10px 20px;
+            padding: 12px 30px;
             border-radius: var(--radius);
+            position: relative;
+            text-align: center;
+            width: 80%;
+            max-width: 250px;
+        }
+
+        .mobile-menu a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
         }
 
         .mobile-menu a:hover {
@@ -179,14 +257,48 @@
             background-color: rgba(46, 139, 87, 0.1);
         }
 
+        .mobile-menu a:hover::before {
+            width: 100%;
+        }
+
+        .mobile-menu .admin-btn {
+            margin-top: 20px;
+            background-color: rgba(46, 139, 87, 0.2);
+            color: var(--primary-color);
+            font-size: 20px;
+            padding: 12px 30px;
+        }
+
+        .mobile-menu .admin-btn:hover {
+            background-color: rgba(46, 139, 87, 0.3);
+        }
+
         /* Hero Section */
         .hero {
             padding: 180px 0 100px;
             text-align: center;
-            background: linear-gradient(rgba(18, 24, 38, 0.9), rgba(18, 24, 38, 0.9)), url('https://images.pexels.com/photos/19166565/pexels-photo-19166565.jpeg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.2); /* Slight dark overlay */
+            z-index: -1;
         }
 
         .profile-pic {
@@ -203,6 +315,8 @@
             font-size: 48px;
             margin-bottom: 15px;
             font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         .hero h2 {
@@ -210,13 +324,15 @@
             color: var(--secondary-color);
             margin-bottom: 20px;
             font-weight: 400;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         .hero p {
             max-width: 700px;
             margin: 0 auto 30px;
             font-size: 18px;
-            color: var(--text-light);
+            color: var(--light-color);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
 
         .social-links {
@@ -227,9 +343,10 @@
         }
 
         .social-links a {
-            color: var(--text-color);
+            color: var(--light-color);
             font-size: 24px;
             transition: var(--transition);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
 
         .social-links a:hover {
@@ -301,6 +418,7 @@
             width: 80px;
             height: 3px;
             background-color: var(--primary-color);
+            transition: var(--transition);
         }
 
         .section-title p {
@@ -944,17 +1062,31 @@
             }
         }
 
+        @media (min-width: 769px) {
+            /* Hide mobile menu button on desktop */
+            .mobile-menu-btn {
+                display: none;
+            }
+            
+            /* Show desktop menu */
+            nav ul {
+                display: flex;
+            }
+        }
+
         @media (max-width: 768px) {
+            /* Show mobile menu button on mobile */
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            /* Hide desktop menu on mobile */
             nav ul {
                 display: none;
             }
 
-            .mobile-menu-btn {
-                display: block;
-            }
-
             .mobile-menu-close {
-                display: block;
+                display: flex;
             }
 
             .hero h1 {
@@ -1060,13 +1192,13 @@
 <body>
     <!-- Main Portfolio -->
     <div id="portfolio">
-        <!-- Header -->
+        <!-- Header with Professional Menu -->
         <header>
             <div class="container header-container">
-                <div class="logo">
+                <a href="#home" class="logo">
                     <i class="fas fa-network-wired"></i>
                     <span>ConfigWizard</span>
-                </div>
+                </a>
                 <nav>
                     <ul id="navMenu">
                         <li><a href="#home">Home</a></li>
@@ -1074,7 +1206,12 @@
                         <li><a href="#services">Services</a></li>
                         <li><a href="#projects">Projects</a></li>
                         <li><a href="#contact">Contact</a></li>
-                        <li><a href="#" id="adminLoginBtn">Admin</a></li>
+                        <li>
+                            <a href="#" id="adminLoginBtn" class="admin-btn">
+                                <i class="fas fa-user-shield"></i>
+                                <span>Admin</span>
+                            </a>
+                        </li>
                     </ul>
                     <button class="mobile-menu-btn" id="mobileMenuBtn">
                         <i class="fas fa-bars"></i>
@@ -1093,11 +1230,19 @@
             <a href="#services">Services</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
-            <a href="#" id="mobileAdminLoginBtn">Admin</a>
+            <a href="#" id="mobileAdminLoginBtn" class="admin-btn">
+                <i class="fas fa-user-shield"></i>
+                <span>Admin</span>
+            </a>
         </div>
 
-        <!-- Hero Section -->
+        <!-- Hero Section with Video Background -->
         <section class="hero" id="home">
+            <video class="hero-video" autoplay muted loop>
+                <source src="https://videos.pexels.com/video-files/1085656/1085656-uhd_2560_1440_25fps.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero-overlay"></div>
             <div class="container">
                 <img src="images/profile.jpg" alt="Ganizani B Njobvu" class="profile-pic">
                 <h1>Ganizani B Njobvu</h1>
@@ -1231,56 +1376,56 @@
             <div class="container">
                 <div class="slideshow-container">
                     <div class="slide active">
-                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Network Design">
+                        <img src="https://images.pexels.com/photos/5475752/pexels-photo-5475752.jpeg" alt="Network Design">
                         <div class="slide-content">
                             <h3>Network Design in Packet Tracer</h3>
                             <p>Enterprise network with VLANs, routing, and security</p>
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="https://images.unsplash.com/photo-1581092921461-39b2f2c8f3b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="GPS Tracking">
+                        <img src="https://images.pexels.com/photos/5380666/pexels-photo-5380666.jpeg" alt="GPS Tracking">
                         <div class="slide-content">
                             <h3>GPS Tracking System</h3>
                             <p>Real-time fleet monitoring solution</p>
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="VoIP System">
+                        <img src="https://cdn.monnit.com/site/images/blog/2016/07/server-room-harzards-1200x628.jpg" alt="VoIP System">
                         <div class="slide-content">
                             <h3>VoIP Implementation</h3>
                             <p>QoS configured for optimal voice quality</p>
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="School Network">
+                        <img src="https://images.pexels.com/photos/1181316/pexels-photo-1181316.jpeg" alt="School Network">
                         <div class="slide-content">
                             <h3>School Network</h3>
                             <p>Scalable design with content filtering</p>
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="https://images.unsplash.com/photo-1597852074816-d933c7d2b988?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Data Center">
+                        <img src="https://images.pexels.com/photos/17323801/pexels-photo-17323801.jpeg" alt="Data Center">
                         <div class="slide-content">
                             <h3>Data Center Network</h3>
                             <p>High-performance infrastructure with redundancy</p>
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Network Cabling">
+                        <img src="https://images.pexels.com/photos/3803517/pexels-photo-3803517.jpeg" alt="Network Cabling">
                         <div class="slide-content">
                             <h3>Structured Cabling</h3>
                             <p>Professional cable management and installation</p>
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Network Security">
+                        <img src="https://images.pexels.com/photos/17636234/pexels-photo-17636234.jpeg" alt="Network Security">
                         <div class="slide-content">
                             <h3>Security Operations Center</h3>
                             <p>24/7 network monitoring and threat detection</p>
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="https://images.unsplash.com/photo-1597852074816-d933c7d2b988?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Cloud Network">
+                        <img src="https://images.pexels.com/photos/19166565/pexels-photo-19166565.jpeg" alt="Cloud Network">
                         <div class="slide-content">
                             <h3>Cloud Network Architecture</h3>
                             <p>Multi-cloud connectivity with SD-WAN</p>
